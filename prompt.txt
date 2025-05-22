@@ -1,0 +1,82 @@
+So basically i want to build an erp platform that consists of 
+onboarding / calendar /leave /project /payroll / tasks / worklogs / chat /assets /expenses  and some more modules ( one app for small to medium scale companies ) .
+many small to medium scale companies use multiple platforms to manage organization .we need to build version 1 of this app.
+i want to build v1 of this idea with php / js / mysql / css framework .
+ suggest me implementation and file structure . and any simple php classes like orm that can be used here for simple dev
+
+
+ note:
+ I don't prefer to use composer , because i'm on shared hosting , but its ok if direct library is available , i will directly put it in vendor ,
+and i don't want to use php artisan serve or other commands for running app and similarly for router can i directly follow this structure and upload that class in vendor?
+
+Recommended CSS Framework
+For quick development with good-looking UI and easy customization:
+
+Use: Tailwind CSS + DaisyUI
+
+Tailwind for layout and utility
+
+DaisyUI for beautiful, pre-built components like modals, navbars, alerts, etc.
+
+✅ 2. PHP Libraries/Classes for Simple Development
+Use lightweight libraries instead of full-stack frameworks like Laravel to keep it simple in V1.
+
+🔸 ORM (Object-Relational Mapping)
+Medoo – Lightweight PHP ORM (single file, easy to use)
+
+PDO (PHP Data Object) – Native and clean, if you want more control.
+
+🔸 Routing
+AltoRouter – Simple and powerful PHP router.
+
+🔸 Template Engine (Optional)
+Plates – Native PHP templating engine (faster than Twig, no new syntax to learn)
+
+medoo , AltoRouter are installed in project .
+and need to use accordians , modals where required 
+
+roles : employee , manager ,hr , finance , department-owner , organization-owner , super-admin
+
+there will be multiple organizations in the company
+and multiple departments for an organization .
+
+create a neat project structure 
+├── app/                    # Application core
+│   ├── config/             # Database and app configs
+│   ├── core/               # Base classes (Router, Controller, DB)
+│   ├── controllers/        # PHP controllers
+│   ├── models/             # ORM or DB access classes
+│   ├── views/              # HTML/PHP templates
+│   └── modules/            # Each ERP module
+│       ├── calendar/
+│       ├── leave/
+│       ├── payroll/
+│       └── ...             # etc.
+│
+├── storage/                # Logs, uploads
+│
+├── vendor/                 # Composer packages
+│
+├── .env    
+
+
+//module structue
+calendar/
+├── CalendarController.php
+├── CalendarModel.php
+├── views/
+│   ├── calendar_list.php
+│   └── calendar_form.php
+└── routes.php
+
+step 1 . create a folder db and .sql file with all necessary tables and also create a file that displays all tables structure in formated way . whenever table is updated in .sql file , need to update that formatted file too for better understanding
+step 2 . lets start with login and register ( we will disable direct register after first registration and we will consider first user as super admin ) . admin can create new user and user needs to login and complete on boarding with basic , family , education , health , address and contact , experience details
+step 3 . create user pages dashboard ( ongoing tasks of user , notifications (pending leaves ,resignations ..ets) , birthdays , user calendar (display total month and on every date populate the user activity . if user is on leave then leave ,similar for  hoilday or project task ) ) use calendar as common component
+step 4 . project management ( view (basic info and top ongoing tasks ) , update (edit , add resources into project , add documents , billing ) , create project )
+step 4 . task management ( basic jira like module .) create / update / view tickets . add comments / documents , worklogs
+step 5 . leave management 
+step 6 . timesheets ( auto timehseet sync from worklogs and auto timesheet for leave)
+step 7 . payroll management ( basic payslips generation based on timehseets ).
+step 8 . profile management (  basic ,family , education , health , address and contact , experience details)
+
+lets build step by step 
